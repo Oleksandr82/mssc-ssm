@@ -2,8 +2,8 @@ package guru.springframework.msscssm.domain;
 
 public enum PaymentState {
     NEW,
-    PRE_AUTH,
+    PRE_AUTHORIZED,
     PRE_AUTH_ERROR,
-    AUTH,
+    AUTHORIZED,
     AUTH_ERROR
 }

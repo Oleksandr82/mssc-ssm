@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class StateMachineConfigTest {
 
     @Autowired
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     StateMachineFactory<PaymentState, PaymentEvent> factory;
 
     @Test
@@ -26,11 +27,8 @@ class StateMachineConfigTest {
         machine.start();
         assertEquals(PaymentState.NEW, machine.getState().getId());
 
-        machine.sendEvent(PaymentEvent.PRE_AUTHORIZE);
-        assertEquals(PaymentState.NEW, machine.getState().getId());
-
         machine.sendEvent(PaymentEvent.PRE_AUTH_APPROVED);
-        assertEquals(PaymentState.PRE_AUTH, machine.getState().getId());
+        assertEquals(PaymentState.PRE_AUTHORIZED, machine.getState().getId());
     }
 
 }
